@@ -1,65 +1,45 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTodoRequest;
-use App\Http\Requests\UpdateTodoRequest;
-use App\Models\Todo;
+    use App\Http\Requests\StoreTodoRequest;
+    use App\Http\Requests\UpdateTodoRequest;
+    use App\Http\Resources\TodoResource;
+    use App\Http\Services\TodoService;
+    use App\Models\Todo;
+    use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+    use Illuminate\Support\Collection;
+    use Illuminate\Support\Facades\Cache;
+    use Illuminate\Support\Facades\File;
+    use Illuminate\Support\Facades\Response;
+    use Illuminate\Support\Facades\Storage;
 
-class TodoController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    class TodoController extends Controller
     {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreTodoRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreTodoRequest $request)
-    {
-        //
-    }
+        public TodoService $todoService;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Todo  $todo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Todo $todo)
-    {
-        //
-    }
+        public function __construct(TodoService $todoService) {
+            $this->todoService = $todoService;
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateTodoRequest  $request
-     * @param  \App\Models\Todo  $todo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateTodoRequest $request, Todo $todo)
-    {
-        //
-    }
+        public function index(): AnonymousResourceCollection {
+            return $this->todoService->getTodos();
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Todo  $todo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Todo $todo)
-    {
-        //
+        public function store(StoreTodoRequest $request): TodoResource {
+            return $this->todoService->createTodo($request);
+        }
+
+        public function show(int $id): TodoResource|array {
+            return $this->todoService->getTodo($id);
+        }
+
+        public function update(UpdateTodoRequest $request, int $id): TodoResource|array {
+            return $this->todoService->updateTodo($request, $id);
+        }
+
+        public function destroy(int $id): array {
+            return $this->todoService->deleteTodo($id);
+        }
     }
-}

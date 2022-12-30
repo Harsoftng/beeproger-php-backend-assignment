@@ -20,7 +20,7 @@ namespace App\Models{
  * @property string $priority
  * @property string $status
  * @property string|null $startDate
- * @property string|null $photo_url
+ * @property string|null $photoUrl
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Todo newModelQuery()

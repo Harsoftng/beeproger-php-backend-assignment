@@ -11,16 +11,15 @@ class CreateTodoTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(): void {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->string("description")->nullable();
+            $table->string("title", 255);
+            $table->string("description", 255)->nullable();
             $table->enum("priority", ["LOW", "NORMAL", "HIGH"])->default("NORMAL");
             $table->enum("status", ["TODO", "IN-PROGRESS", "COMPLETED"])->default("TODO");
             $table->dateTime("startDate")->nullable();
-            $table->string("photo_url")->nullable();
+            $table->string("photoUrl")->nullable();
             $table->timestamps();
         });
     }
@@ -30,8 +29,7 @@ class CreateTodoTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down(): void {
         Schema::dropIfExists('todos');
     }
 }
