@@ -3,16 +3,17 @@ services:
 
   backend:
     container_name: bp_api
-    image: docker.io/bitnami/laravel:8
+    build:
+      context: .
+      dockerfile: DockerFile
     environment:
-      - DB_HOST=db
-      - DB_DATABASE=bp_admin
-      - DB_USERNAME=root
-      - DB_PASSWORD=Pa$$w0rd1
-      - REDIS_HOST=redis
-      - DB_PORT=3306
+      DB_HOST: db
+      DB_DATABASE: admin
+      DB_USERNAME: root
+      DB_PASSWORD: Pa$$w0rd1
+      REDIS_HOST: redis
     ports:
-      - 1759:8000
+      - 1759:8080
     volumes:
       - .:/app
     depends_on:
@@ -36,18 +37,17 @@ services:
 
   db:
     container_name: bp_db
-    image: mysql:8.0
+    image: mysql:latest
     environment:
-      MYSQL_DATABASE: bp_admin
+      MYSQL_DATABASE: admin
       MYSQL_USERNAME: root
-#      MYSQL_ALLOW_EMPTY_PASSWORD: false
+      MYSQL_ALLOW_EMPTY_PASSWORD: false
       MYSQL_PASSWORD: Pa$$w0rd1
       MYSQL_ROOT_PASSWORD: Pa$$w0rd1
-      MYSQL_PORT: 3306
     volumes:
       - .dbdata:/var/lib/mysql
     ports:
-      - 3306:3306
+      - 3308:3306
     networks:
       - app
 
