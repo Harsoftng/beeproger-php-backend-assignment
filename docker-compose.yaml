@@ -1,0 +1,47 @@
+version: '3.7'
+services:
+
+  backend:
+    container_name: bp_api
+    build:
+      context: .
+      dockerfile: DockerFile
+    environment:
+      DB_HOST: db
+      DB_DATABASE: admin
+      DB_USERNAME: root
+      DB_PASSWORD: Pa$$w0rd@1
+      REDIS_HOST: redis
+    ports:
+      - 1759:8080
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app
+
+  redis:
+    container_name: bp_redis
+    image: redis:latest
+
+  db:
+    container_name: bp_db
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: admin
+      MYSQL_USERNAME: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: false
+      MYSQL_PASSWORD: Pa$$w0rd@1
+      MYSQL_ROOT_PASSWORD: Pa$$w0rd@1
+    volumes:
+      - .dbdata:/var/lib/mysql
+    ports:
+      - 3308:3306
+    networks:
+      - app
+
+networks:
+  app:
+
