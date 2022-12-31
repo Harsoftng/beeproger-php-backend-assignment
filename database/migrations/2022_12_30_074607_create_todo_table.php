@@ -17,7 +17,7 @@ class CreateTodoTable extends Migration
             $table->string("title", 255);
             $table->string("description", 255)->nullable();
             $table->enum("priority", ["LOW", "NORMAL", "HIGH"])->default("NORMAL");
-            $table->enum("status", ["TODO", "IN-PROGRESS", "COMPLETED"])->default("TODO");
+            $table->enum("status", ["PENDING", "COMPLETED"])->default("PENDING");
             $table->dateTime("startDate")->nullable();
             $table->string("photoUrl")->nullable();
             $table->timestamps();

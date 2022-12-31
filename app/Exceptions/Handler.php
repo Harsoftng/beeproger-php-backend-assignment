@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -34,12 +35,19 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+//        $this->reportable(function (Throwable $e) {
+//            //
+//        });
+
         $this->reportable(function (Throwable $e) {
-            return [
-                "success" => false,
-                "message" => $e->getMessage(),
-                "code" => $e->getCode() ?? 400,
-            ];
+            return response(
+                [
+                    "success" => false,
+                    "message" => $e->getMessage(),
+                    "code"    => $e->getCode() ?? 400,
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
         });
     }
 }

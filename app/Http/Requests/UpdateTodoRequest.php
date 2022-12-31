@@ -25,7 +25,7 @@
                 "id"          => "required|numeric|exists:todos,id",
                 "title"       => "required|max:255",
                 "priority"    => "nullable|in:LOW,NORMAL,HIGH",
-                "status"      => "nullable|in:TODO,IN-PROGRESS,COMPLETED",
+                "status"      => "nullable|in:PENDING,COMPLETED",
                 "startDate"   => "nullable|date",
                 "description" => "nullable|max:255",
                 'photoUpload' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10000',

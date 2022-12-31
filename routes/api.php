@@ -19,5 +19,6 @@
         return $request->user();
     });
 
-    Route::apiResource("todos", TodoController::class, [])->except([""]);
+    Route::get("todos/status/{status}", [TodoController::class, "todoStatus"]);
+    Route::apiResource("todos", TodoController::class, []);
 
