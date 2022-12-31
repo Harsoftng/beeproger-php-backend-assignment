@@ -19,6 +19,7 @@
         return $request->user();
     });
 
-    Route::get("todos/status/{status}", [TodoController::class, "todoStatus"]);
+    Route::get("todos/status/{status}", [TodoController::class, "getTodoByStatus"]);
+    Route::patch("todos/status/{id}/{status}", [TodoController::class, "todoStatus"]);
     Route::apiResource("todos", TodoController::class, []);
 
