@@ -7,58 +7,64 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About Beeproger Todo App
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This Todo App is the back-end part of the take home assignment from Beeproger. Find details below
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### The beeproger assignment
+As indicated during the job interview, we would like you to complete an assignment
+for us. This will allow us to get a clear picture of your knowledge level.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Here's what you should do:
+Develop a To-do list and/or Shopping list for us. It should consist of a loss back-
+and frontend, which communicate with each other.
 
-## Learning Laravel
+### The characteristics of this To-do list are are:
+- Shows a list of items;
+- Being able to edit an item;
+- A photo uploaded with the item;
+- Being able to view the details of an item;
+- The option to mark an item as complete;
+- Being able to remove an item from the list;
+- And make sure to always check for errors.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### The backend requirements:
+- Laravel Framework - REST
+- MySQL Database
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### The frontend requirements:
+At beeproger we work with the following frameworks/libraries/templating engines
+- React
+- Angular
+- Ionic
+- Blade
+- Livewire
 
-## Laravel Sponsors
+# Installation Instructions
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Technologies used
+- Docker 
+- Docker Compose
+- Redis
+- Mysql 
+- Laravel 
 
-### Premium Partners
+### Installation
+The backend is fully dockerized, and runs on port 1759. So the backend REST API Service will run at http://localhost:1759/api
+- Download & Install Docker desktop from https://www.docker.com/products/docker-desktop/
+- Navigate to the root directory of this project and run the following commands:
+  - Run "docker-compose up -d" to setup all backend services and apps.
+  - Run "docker exec -it bp_api sh" to enter the backend docker container shell and execute the following commands
+      - php artisan optimize:clear
+      - php artisan migrate
+      - exit
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+## NB:
+This project was done on holidays/vacation so i did not really have the time to complete the app. The only part remaining is writing automated tests for both the backend and frontend apps. If you have any questions or require more info running the app, please contact me on harsoftng@gmail.com.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
+Cheers 🥂😊
+    
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This app and the Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
